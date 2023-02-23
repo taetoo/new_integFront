@@ -1,0 +1,41 @@
+.navbar_logo {
+    display: flex;
+    font-size: 24px;
+    color: white;
+    padding-top: 100px;
+    justify-content: center;
+    align-items: center;
+}
+.logo_image{
+    max-width: 100%;
+    width: 200px;
+    /* padding: 5px 10px; */
+}
+
+.login-form {
+    flex-direction: column;
+    width: 270px;
+    margin: 5vh auto;
+    height: 37vh;
+    border: 7px solid #dbdbdb;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+
+.login-id-label {
+    padding-bottom: 3px;
+}
+.login-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-input {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding-bottom: 5px;;
+}

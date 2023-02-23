@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta property="og:title" content="Incuvers 인큐버스" />
+    <meta property="og:description" content="통합코드생성시스템." />
+    <meta property="og:image" content="./images/testpage.jpg" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Noto+Sans+KR:wght@700&family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-ico">      
+    <title>인큐버스</title>
+    <script src="https://kit.fontawesome.com/0d707ca2ca.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+
+</head>
+
+
+<!-- 불펌방지 태그 순서대로 우클릭 방지, 블록 선택 방지, 드래그 방지 -->
+<body oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar_logo">
+                <a href="index.html"><img class="logo_image" src="./images/main-logo.png"></a>
+            </div>
+            <ul class="navbar_menu">
+                <li><a href="about.html">통합고지</a></li>
+                <li><a href="team.html">결과파일</a></li>
+                <li><a href="login.html">로그아웃</a></li>
+            </ul>
+            <a class="navbar_toggleBtn">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+        </nav>
+    </header>
+    <div id="contents-wrap">
+        <!-- <hr>  -->
+        <h2 class="title">통합코드 생성 시스템</h2>
+        <div class="contents">
+            <div class="upload-box">
+              <div id="drop-file" class="drag-file">
+                <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
+                <p class="message">Drag files to upload</p>
+              </div>
+              <label class="file-label">Choose File
+                <input class="file" id="chooseFile" type="file" multiple onchange="dropFile.handleFiles(this.files)" multiple accept=".xls,.xlsx">
+              </label>
+            </div>
+            <div class="send-box">
+                <div class="show-file">
+                    <div id="files" class="files"></div>
+                </div>
+                <label class="fileSend-label">Send File
+                    <!-- <input class="file" id="chooseFile" type="file" multiple onchange="dropFile.handleFiles(this.files)" multiple accept=".xls,.xlsx"> -->
+                </label>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    <footer></footer>
+
+</body>
+
+</html>
+
+
+
+
+
+

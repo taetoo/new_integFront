@@ -1,0 +1,341 @@
+:root {
+    --text-color: black;
+    --background-color: ghostwhite;
+    --accent-color: #f2d8d8;
+    --footer-color: darkgray;
+    --hover-color: rgb(255, 175, 143, 0.4);
+}
+
+body {
+    font-family: 'capitana', 'nanum-gothic';
+    font-size: 16px;
+    line-height: 30px;
+    color: #0d1012;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    word-break: keep-all;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.logo_text {
+    font-size: 24px;
+    font-weight: 50;
+    padding-top: 25px;
+}
+
+/* 네비게이션바 */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    padding: 8px 12px;
+    /* background-color: var(--background-color); */
+}
+
+.navbar_logo {
+    font-size: 24px;
+    color: white;
+    padding-left: 15px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+
+
+}
+.logo_image{
+    max-width: 100%;
+    width: 130px;
+    padding: 5px 10px;
+}
+
+.navbar_logo i {
+    color: var(--accent-color);
+}
+
+.navbar_menu {
+    font-family: 'capitana-light';
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    padding-right: 50px
+}
+
+.navbar_menu li {
+    padding: 8px 25px;
+}
+
+.navbar_menu li:hover {
+    background-color: var(--hover-color);
+    border-radius: 4px;
+}
+.navbar_toggleBtn {
+    display: none;
+    position: absolute;
+    right: 50px;
+    font-size: 25px;
+    color: var(--text-color);
+    padding-top: 10px;
+
+}
+.navbar_toggleBtn :hover {
+    color: var(--hover-color);
+}
+
+
+/* 파일업로드 */
+#contents-wrap {
+    padding-top: 100px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 800px;
+    }
+.title {
+  text-align: center;
+}
+
+.contents {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+.contents .upload-box {
+  width: calc(50% - 15px);
+  box-sizing: border-box;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents .upload-box .drag-file {
+  width: 100%;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px dashed #dbdbdb;
+}
+.contents .upload-box .drag-file.highlight {
+  border: 3px dashed #E7542E;;
+}
+.contents .upload-box .drag-file .image {
+  width: 40px;
+}
+.contents .upload-box .drag-file .message {
+  margin-bottom: 0;
+}
+.contents .upload-box .file-label {
+  margin-top: 30px;
+  color: #fff;
+  background-color: #E7542E;
+  text-align: center;
+  padding: 10px 0;
+  width: 65%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.contents .upload-box .file-label:hover {
+  /* box-shadow: 0 0 0 max(4px, 0.2em) lightgray; */
+  background-color: orange;
+  cursor: pointer;
+}
+.contents .upload-box .file {
+  display: none;
+}
+
+.contents .send-box {
+  /* visibility : hidden; */
+  width: calc(50% - 15px);
+  box-sizing: border-box;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.contents .send-box .show-file {
+  width: 100%;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px dashed #dbdbdb;
+}
+
+.contents .send-box .show-file .files {
+  width: calc(70%);
+  box-sizing: border-box;
+  overflow: auto;
+  height: 360px;
+  
+}
+
+.contents .send-box .show-file .files .file .delete i{
+  color: #ff5353;
+  margin-left: 5px;
+}
+
+
+.contents .send-box .fileSend-label {
+  margin-top: 30px;
+  color: #fff;
+  background-color: #E7542E;
+  text-align: center;
+  padding: 10px 0;
+  width: 65%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.contents .send-box .fileSend-label:hover {
+  /* box-shadow: 0 0 0 max(4px, 0.2em) lightgray; */
+  background-color: orange;
+  cursor: pointer;
+}
+
+
+
+
+
+.contents .files .file {
+  display: flex;
+  padding: 20px 20px;
+  border-bottom: 1px solid #dbdbdb;
+}
+.contents .files .file:last-child {
+  margin-bottom: 0px;
+  border-bottom: none;
+}
+
+.contents .files .file .thumbnail {
+  display: flex;
+  flex: none;
+  width: 50px;
+  margin-right: 20px;
+  align-items: center;
+}
+.contents .files .file .thumbnail .image {
+  width: 100%;
+}
+
+.contents .files .file .details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contents .files .file .details .header {
+  display: flex;
+}
+.contents .files .file .details .header .name {
+  width: 100px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.contents .files .file .details .header .size {
+  margin-left: auto;
+}
+
+.contents .files .file .progress {
+  position: relative;
+  height: 6px;
+  background-color: #dbdbdb;
+  overflow: hidden;
+  margin-top: 4px;
+  border-radius: 10px;
+}
+.contents .files .file .progress .bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #E7542E;;
+}
+
+.contents .files .file .status {
+  display: flex;
+  width: 100%;
+}
+.contents .files .file .status .percent {
+}
+.contents .files .file .status .speed {
+  margin-left: auto;
+}
+
+@media(max-width: 700px) {
+  .contents {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+  .contents .upload-box {
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 0;
+  }
+  .contents .upload-box .drag-file {
+    height: 150px;
+  }
+  .contents .files {
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 0;
+    overflow: initial;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 758px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 50px;
+    }
+    .navbar_menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navbar_menu li {
+        width: 100%;
+        text-align: center;
+    }
+    .navbar_toggleBtn {
+        display: flex;
+    }
+
+    .navbar_menu.active,
+    .navbar_links.active {
+        display: flex;
+    }
+    
+}
