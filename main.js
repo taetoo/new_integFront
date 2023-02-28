@@ -16,8 +16,7 @@ toggleBtn.addEventListener('click', () => {
 //   const selectedFile = [...fileInput.files];
 //   console.log(selectedFile);
 // };
-var num = 0;
-var filesArr = new Map();
+
 
 // 파일업로드
 function DropFile(dropAreaId, fileListId) {
@@ -44,33 +43,65 @@ function DropFile(dropAreaId, fileListId) {
 
     // drop 파일 영역에 파일을 내려놨을 때 생기는 이벤트
     function handleDrop(e) {
+        
         unhighlight(e);
         let dt = e.dataTransfer;
         let files = dt.files;
-        handleFiles(files);
-        // console.log('filetest',files)
-        const fileList = document.getElementById(fileListId);
-
-        // console.log("fileList : ", fileList)
-
-        if (fileList) {
-          fileList.scrollTo({ top: fileList.scrollHeight });
+        if(addFile(files)){
+          handleFiles(files);
+          console.log('드롭다운시 파일목록',files)
+          const fileList = document.getElementById(fileListId);
+  
+          console.log("드롭다운시 파일html : ", fileList)
+  
+          if (fileList) {
+            fileList.scrollTo({ top: fileList.scrollHeight });
+          }
+        } else{
+          alert("드롭다운 파일은 4개까지만 첨부가능")
         }
+
+        
     }
 
+    // 첨부파일 갯수 검증
+    function addFile(files){
+      let maxFileCnt = 5;   // 첨부파일 최대 개수
+      const attFileCnt = document.getElementById('files').childElementCount //기존 파일 첨부 개수
+      console.log("기존 추가 첨부파일", attFileCnt)
+
+      let remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
+      console.log("추가첨부가능",remainFileCnt)
+    
+      let curFileCnt = files.length;  // 현재 선택된 첨부파일 개수
+
+      console.log("현재선택", curFileCnt)
+      // console.log(curFileCnt)
+        
+      if(curFileCnt > remainFileCnt){
+          return false;
+  
+        } else{
+          return true;
+        }
+
+    
+    }
+    
     function handleFiles(files) {
+      console.log(files)
+          if(addFile(files)){
+            let copy = [...files];
+            // copy.forEach(previewFile)
+             copy.forEach((file, index) => {
+                //  console.log('idx', index)
+                 previewFile(file, index)
+             })
+          } else {
+            alert("choosefile 안됨")
+          }
+         
 
-        let copy = [...files];
-        // copy.forEach(previewFile)
-         copy.forEach((file, index) => {
-             console.log('idx', index)
-             previewFile(file, index)
-         })
-
-      
-
-      // copy.forEach(setMap)
-      // console.log(filesArr);
     }
 
     // function setMap(file){
@@ -90,8 +121,8 @@ function DropFile(dropAreaId, fileListId) {
         let deleteDom = document.getElementsByClassName('fas fa-minus-square')
 
       fileDOM.className = "file";
-      fileDOM.id = index
-      console.log("domId_index : ", fileDOM.id)
+      fileDOM.id = "fileIndex" + index;
+      // console.log("domId_index : ", fileDOM.id)
 
       fileDOM.innerHTML = `
         <div class="thumbnail">
@@ -129,39 +160,13 @@ function DropFile(dropAreaId, fileListId) {
 function remove_children(index) {
     console.log('node', index)
     const parent = document.getElementById('files')
-    const child = document.getElementById(index)
+    const child = document.getElementById("fileIndex" + index)
 
     parent.removeChild(child)
 
     console.log('parent', parent)
   
-    // console.log('child', parent.childNodes[index])
-
-    // parent.removeChild(parent.getElementById(index));
-
-    // filesArr -> index : 0,1,2,3
-    // 삭제되고 나면 -> 0,1,2
-
-    // 그런데 Node의 index값은 처음 초기 셋팅 값 그대로 그러면 매칭을 어떻게 해줘야지...?
-
-
-
-    // 지우고 다시 index
-    // filesArr.delete(num)
-    // console.log('filesArr', filesArr)
-
-    // filesArr.forEach((file, index) => )
-
-    // num = childNodes.length-1
-
-    // const parent = document.getElementById('files')
-    // parent.removeChild(child.num)
-    // filesArr.delete(num)
-
-
-    // $('#file' + num).remove();
-    // child.delete(num);
-    // console.log(child)
+    
 }
 
 
