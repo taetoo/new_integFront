@@ -9,20 +9,15 @@ toggleBtn.addEventListener('click', () => {
 })
 
 
-// const fileInput = document.getElementById("chooseFile");
-// // 또는 const fileInput = $("#fileUpload").get(0);
-
-// fileInput.onchange = () => {
-//   const selectedFile = [...fileInput.files];
-//   console.log(selectedFile);
-// };
-
+let fileArr = new Map();
+let mapKey = 0;
 
 // 파일업로드
 function DropFile(dropAreaId, fileListId) {
     let dropArea = document.getElementById(dropAreaId);
     let fileList = document.getElementById(fileListId);
-    
+
+   
     // 기존 브라우저 drag&drop 이벤트 막기
     function preventDefaults(e) {
       e.preventDefault();
@@ -43,16 +38,27 @@ function DropFile(dropAreaId, fileListId) {
 
     // drop 파일 영역에 파일을 내려놨을 때 생기는 이벤트
     function handleDrop(e) {
-        
         unhighlight(e);
         let dt = e.dataTransfer;
         let files = dt.files;
+
+        console.log("filesTest",files)
+
+        // console.log(files)
         if(addFile(files)){
+          let show = document.getElementById("send-box")
+          if(show.style.display == "none"){
+            show.style.display == "flex";
+          } else {
+            show.style.display == "none"; 
+          }
+
           handleFiles(files);
-          console.log('드롭다운시 파일목록',files)
+
+          // console.log('드롭다운시 파일목록',files)
           const fileList = document.getElementById(fileListId);
   
-          console.log("드롭다운시 파일html : ", fileList)
+          // console.log("드롭다운시 파일html : ", fileList)
   
           if (fileList) {
             fileList.scrollTo({ top: fileList.scrollHeight });
@@ -67,16 +73,14 @@ function DropFile(dropAreaId, fileListId) {
     // 첨부파일 갯수 검증
     function addFile(files){
       let maxFileCnt = 5;   // 첨부파일 최대 개수
-      const attFileCnt = document.getElementById('files').childElementCount //기존 파일 첨부 개수
-      console.log("기존 추가 첨부파일", attFileCnt)
+      let attFileCnt = document.getElementById('files').childElementCount //기존 파일 첨부 개수
 
-      let remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
-      console.log("추가첨부가능",remainFileCnt)
-    
+      // let file = document.getElementById('files').children
+      // console.log(file)
+
+
       let curFileCnt = files.length;  // 현재 선택된 첨부파일 개수
-
-      console.log("현재선택", curFileCnt)
-      // console.log(curFileCnt)
+      let remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
         
       if(curFileCnt > remainFileCnt){
           return false;
@@ -87,27 +91,50 @@ function DropFile(dropAreaId, fileListId) {
 
     
     }
-    
+
+
+/* 첨부파일 검증 */
+// function validation(files) {
+//   if (obj.name.length > 100) {
+//       alert("파일명이 100자 이상인 파일은 제외되었습니다.");
+//       return false;
+//   } else if (obj.size > (100 * 1024 * 1024)) {
+//       alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+//       return false;
+//   } else if (obj.name.lastIndexOf('.') == -1) {
+//       alert("확장자가 없는 파일은 제외되었습니다.");
+//       return false;
+//   }
+//   else if (fileNo != 0) {
+//       for (let value of filesArr.values()) {
+//           if (value.name == obj.name) {
+//               alert("중복된 파일입니다.")
+//               return false;
+//           }
+//       }
+//       return true;
+//   }
+//   else {
+//       return true;
+//   }
+// }
+
     function handleFiles(files) {
-      console.log(files)
+      
           if(addFile(files)){
             let copy = [...files];
             // copy.forEach(previewFile)
              copy.forEach((file, index) => {
-                //  console.log('idx', index)
-                 previewFile(file, index)
+              fileArr.set(mapKey, file)
+                //  console.log('file : ', file, "index : ", index)
+                 previewFile(file, mapKey)
+                 mapKey++;
+                 console.log("fileArr:",fileArr)
              })
           } else {
             alert("choosefile 안됨")
           }
-         
-
     }
-
-    // function setMap(file){
-    //   filesArr.set(num,file);
-    //   num++;
-    // }
 
     function previewFile(file, index) {
         // console.log('index', index)
@@ -163,8 +190,10 @@ function remove_children(index) {
     const child = document.getElementById("fileIndex" + index)
 
     parent.removeChild(child)
+    fileArr.delete(index)
 
     console.log('parent', parent)
+    console.log(fileArr)
   
     
 }

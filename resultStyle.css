@@ -106,10 +106,12 @@ a {
 
 .contents {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 30px;
+  align-items: center;
+
 }
-.contents .upload-box {
+/* .contents .upload-box {
   width: calc(50% - 15px);
   box-sizing: border-box;
   margin-right: 30px;
@@ -136,8 +138,8 @@ a {
 }
 .contents .upload-box .drag-file .message {
   margin-bottom: 0;
-}
-.contents .upload-box .file-label {
+} */
+.contents .file-label {
   margin-top: 30px;
   color: #fff;
   background-color: #E7542E;
@@ -147,12 +149,12 @@ a {
   border-radius: 6px;
   cursor: pointer;
 }
-.contents .upload-box .file-label:hover {
+.contents .file-label:hover {
   /* box-shadow: 0 0 0 max(4px, 0.2em) lightgray; */
   background-color: orange;
   cursor: pointer;
 }
-.contents .upload-box .file {
+.contents .file {
   display: none;
 }
 
@@ -208,9 +210,9 @@ a {
   cursor: pointer;
 }
 
-.contents .send-box .file {
-  display: none;
-}
+
+
+
 
 .contents .files .file {
   display: flex;
@@ -280,36 +282,10 @@ a {
 }
 
 @media(max-width: 700px) {
-    .navbar {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      height: 50px;
-  }
-  .navbar_menu {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-  }
-
-  .navbar_menu li {
-      width: 100%;
-      text-align: center;
-  }
-  .navbar_toggleBtn {
-      display: flex;
-  }
-
-  .navbar_menu.active,
-  .navbar_links.active {
-      display: flex;
-  }
   .contents {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
-
   }
   .contents .upload-box {
     width: 100%;
@@ -320,28 +296,48 @@ a {
     height: 150px;
   }
   .contents .files {
-    width: 10%;
+    width: 100%;
     box-sizing: border-box;
     margin-right: 0;
     overflow: initial;
   }
+}
 
-  .contents .send-box {
-    margin-top: 40px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-right: 0;
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 758px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 50px;
+    }
+    .navbar_menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navbar_menu li {
+        width: 100%;
+        text-align: center;
+    }
+    .navbar_toggleBtn {
+        display: flex;
+    }
+
+    .navbar_menu.active,
+    .navbar_links.active {
+        display: flex;
+    }
     
-  }
-
-  .contents .send-box .show-file {
-    height: 150px;
-  }
-  
-
-
-
-
-
-
 }
