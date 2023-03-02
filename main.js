@@ -42,7 +42,7 @@ function DropFile(dropAreaId, fileListId) {
         let dt = e.dataTransfer;
         let files = dt.files;
 
-        console.log("filesTest",files)
+        // console.log("filesTest",files)
 
         // console.log(files)
         if(addFile(files)){
@@ -74,11 +74,6 @@ function DropFile(dropAreaId, fileListId) {
     function addFile(files){
       let maxFileCnt = 5;   // 첨부파일 최대 개수
       let attFileCnt = document.getElementById('files').childElementCount //기존 파일 첨부 개수
-
-      // let file = document.getElementById('files').children
-      // console.log(file)
-
-
       let curFileCnt = files.length;  // 현재 선택된 첨부파일 개수
       let remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
         
@@ -88,52 +83,78 @@ function DropFile(dropAreaId, fileListId) {
         } else{
           return true;
         }
-
-    
+ 
     }
 
-
 /* 첨부파일 검증 */
-// function validation(files) {
-//   if (obj.name.length > 100) {
-//       alert("파일명이 100자 이상인 파일은 제외되었습니다.");
-//       return false;
-//   } else if (obj.size > (100 * 1024 * 1024)) {
-//       alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
-//       return false;
-//   } else if (obj.name.lastIndexOf('.') == -1) {
-//       alert("확장자가 없는 파일은 제외되었습니다.");
-//       return false;
-//   }
-//   else if (fileNo != 0) {
-//       for (let value of filesArr.values()) {
-//           if (value.name == obj.name) {
-//               alert("중복된 파일입니다.")
-//               return false;
-//           }
-//       }
-//       return true;
-//   }
-//   else {
-//       return true;
-//   }
-// }
 
     function handleFiles(files) {
-      
           if(addFile(files)){
             let copy = [...files];
             // copy.forEach(previewFile)
              copy.forEach((file) => {
-              fileArr.set(mapKey, file)
+             console.log("file",file)
+            if (file.name.length > 100) {
+                alert("파일명이 100자 이상인 파일은 제외되었습니다.");
+                return false;
+            } else if (file.size > (100 * 1024 * 1024)) {
+                alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+                return false;
+            } else if (file.name.lastIndexOf('.') == -1) {
+                alert("확장자가 없는 파일은 제외되었습니다.");
+                return false;
+            // } else if (files.length != 0) {
+            //     for (let value of fileArr.values()) {
+            //         if (value.name == file.name) {
+            //             alert("중복된 파일입니다.")
+            //             return false;
+            //         }
+            //     }
+            // return true;
+            }
+            fileArr.set(mapKey, file)
                  previewFile(file, mapKey)
                  mapKey++;
-                 console.log("fileArr:",fileArr)
-             })
+                 console.log(fileArr)
+                 })
+              
           } else {
             alert("choosefile 안됨")
           }
     }
+  /* 첨부파일 검증 */
+  function validation(fileArr) {
+    if (obj.name.length > 100) {
+        alert("파일명이 100자 이상인 파일은 제외되었습니다.");
+        return false;
+    } else if (fileArr.file.size > (100 * 1024 * 1024)) {
+        alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+        return false;
+    } else if (fileArr.file.name.lastIndexOf('.') == -1) {
+        alert("확장자가 없는 파일은 제외되었습니다.");
+        return false;
+    }
+    else if (mapKey != 0) {
+        for (let value of fileArr.values()) {
+            if (value.name == fileArr.name) {
+                alert("중복된 파일입니다.")
+                return false;
+            }
+        }
+        return true;
+    }
+    else {
+        return true;
+    }
+  }
+
+
+
+
+
+
+
+
 
     function previewFile(file, index) {
         // console.log('index', index)
@@ -196,6 +217,58 @@ function remove_children(index) {
   
     
 }
+
+$(function () {
+
+  $('#send-file').on('click', function () {
+      uploadFile()
+      FunLoadingBarStart()
+ 
+  });
+
+  });
+
+  function uploadFile() {
+      if(fileArr.size != 0){
+          let form = $('#file-form')[0];
+          let formData = new FormData(form);
+          
+              $.ajax({
+                  url : '/excel',
+                  type : 'POST',
+                  data : formData,
+                  contentType : false,
+                  processData : false
+              }).done(function(data){
+                  cancelIdleCallback(data)
+              });    
+      } else {
+          alert("첨부된 파일이 없습니다.")
+          location.reload();
+      }
+
+  
+  }
+
+  function FunLoadingBarStart() {
+      let backHeight = $(document).height();               	//뒷 배경의 상하 폭
+      let backWidth = window.document.body.clientWidth;		//뒷 배경의 좌우 폭
+   
+      let backGroundCover = "<div id='back'></div>";			//뒷 배경을 감쌀 커버
+      let loadingBarImage = '';								//가운데 띄워 줄 이미지
+   
+      loadingBarImage += "<div id='loadingBar'>";
+      loadingBarImage += "     <img src='./images/loadingbar.gif'/>"; //로딩 바 이미지
+      loadingBarImage += "</div>";
+      loadingBarImage += "<div id='noticeMessage'><p>진행중입니다. 페이지에서 벗어나지 마십시오.</p></div>"
+   
+      $('body').append(backGroundCover).append(loadingBarImage); 
+   
+      $('#back').css({ 'width': backWidth, 'height': backHeight, 'opacity': '0.3' });
+      $('#back').show(); 
+      $('#loadingBar').show();
+  }
+
 
 
 
