@@ -8,7 +8,7 @@ toggleBtn.addEventListener('click', () => {
     // links.classList.toggle('active');
 })
 
-
+// 파일 저장 맵
 let fileArr = new Map();
 let mapKey = 0;
 
@@ -124,9 +124,8 @@ function DropFile(dropAreaId, fileListId) {
           if(addFile(files)){
             let copy = [...files];
             // copy.forEach(previewFile)
-             copy.forEach((file, index) => {
+             copy.forEach((file) => {
               fileArr.set(mapKey, file)
-                //  console.log('file : ', file, "index : ", index)
                  previewFile(file, mapKey)
                  mapKey++;
                  console.log("fileArr:",fileArr)

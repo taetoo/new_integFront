@@ -137,6 +137,11 @@ a {
 .contents .upload-box .drag-file .message {
   margin-bottom: 0;
 }
+.contents .upload-box .file {
+  display: none;
+}
+
+
 .contents .upload-box .file-label {
   margin-top: 30px;
   color: #fff;
@@ -147,14 +152,22 @@ a {
   border-radius: 6px;
   cursor: pointer;
 }
-.contents .upload-box .file-label:hover {
+.contents .upload-box .file-label:hover + .notice-message {
   /* box-shadow: 0 0 0 max(4px, 0.2em) lightgray; */
-  background-color: orange;
+  background-color: #444444;
   cursor: pointer;
+  display: block;
+
 }
-.contents .upload-box .file {
+.notice-message {
+  margin-top: 490px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: #ffffff;
+  position: absolute;
   display: none;
 }
+
 
 .contents .send-box {
   /* visibility : hidden; */
@@ -207,6 +220,16 @@ a {
   background-color: orange;
   cursor: pointer;
 }
+
+/* .contents .upload-box .notice-message {
+  display: block;
+  margin-top: 13px;
+ } */
+ 
+ 
+
+
+
 
 .contents .send-box .file {
   display: none;
@@ -278,6 +301,8 @@ a {
 .contents .files .file .status .speed {
   margin-left: auto;
 }
+
+
 
 @media(max-width: 700px) {
     .navbar {

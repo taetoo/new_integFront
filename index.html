@@ -7,7 +7,7 @@
 
     <meta property="og:title" content="Incuvers 인큐버스" />
     <meta property="og:description" content="통합코드생성시스템." />
-    <meta property="og:image" content="./images/testpage.jpg" />
+    <meta property="og:image" content="./images/main.png" />
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
@@ -56,6 +56,8 @@
               <label class="file-label">Choose File
                 <input class="file" id="chooseFile" type="file" multiple='multiple' multiple onchange="dropFile.handleFiles(this.files)" multiple accept=".xls,.xlsx">
               </label>
+              <div class="notice-message">파일은 최대 5개까지 첨부 가능합니다.</div>
+              
             </div>
             <div class="send-box" id="send-box" >
                 <div class="show-file">
