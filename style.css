@@ -157,7 +157,6 @@ a {
   background-color: #444444;
   cursor: pointer;
   display: block;
-
 }
 .notice-message {
   margin-top: 490px;
@@ -166,6 +165,7 @@ a {
   color: #ffffff;
   position: absolute;
   display: none;
+  font-size: 13px;
 }
 
 
@@ -219,17 +219,8 @@ a {
   /* box-shadow: 0 0 0 max(4px, 0.2em) lightgray; */
   background-color: orange;
   cursor: pointer;
+  
 }
-
-/* .contents .upload-box .notice-message {
-  display: block;
-  margin-top: 13px;
- } */
- 
- 
-
-
-
 
 .contents .send-box .file {
   display: none;
@@ -315,16 +306,20 @@ a {
 #loadingBar{
   position:absolute;
   left:50%;
-  top: 40%;
+  top: 50%;
   display:none;
   z-index:200;
+  transform: translate(-70%, -70%);
 }
 
 #noticeMessage {
   position:absolute;
-  left:45%;
+  left:50%;
   top: 50%;
   z-index:200;
+  transform: translate(-50%, 10%);
+  color:#444444;
+  font-weight: bolder;
 }
 
 
@@ -389,7 +384,16 @@ a {
     height: 150px;
   }
   
-
+  #noticeMessage {
+    position:absolute;
+    left:50%;
+    top: 50%;
+    z-index:200;
+    transform: translate(-50%, -10%);
+    color:#444444;
+    font-weight: bolder;
+    font-size: 13px;
+  }
 
 
 

@@ -93,7 +93,7 @@ function DropFile(dropAreaId, fileListId) {
             let copy = [...files];
             // copy.forEach(previewFile)
              copy.forEach((file) => {
-             console.log("file",file)
+            //  console.log("file",file)
             if (file.name.length > 100) {
                 alert("파일명이 100자 이상인 파일은 제외되었습니다.");
                 return false;
@@ -103,58 +103,30 @@ function DropFile(dropAreaId, fileListId) {
             } else if (file.name.lastIndexOf('.') == -1) {
                 alert("확장자가 없는 파일은 제외되었습니다.");
                 return false;
-            // } else if (files.length != 0) {
-            //     for (let value of fileArr.values()) {
-            //         if (value.name == file.name) {
-            //             alert("중복된 파일입니다.")
-            //             return false;
-            //         }
-            //     }
-            // return true;
+            } else if (files.length != 0) {
+                console.log("파일명",file.name)
+                for (let value of fileArr.values()) {
+                    if (value.name == file.name) {
+                        alert("중복된 파일입니다.")
+                        return false;
+                    }
+                }
+                fileArr.set(mapKey, file)
+                previewFile(file, mapKey)
+                mapKey++;
+                console.log("파일리스트",fileArr)
+            return true;
             }
-            fileArr.set(mapKey, file)
-                 previewFile(file, mapKey)
-                 mapKey++;
-                 console.log(fileArr)
+            // fileArr.set(mapKey, file)
+            //      previewFile(file, mapKey)
+            //      mapKey++;
+            //      console.log("파일리스트",fileArr)
                  })
               
           } else {
             alert("choosefile 안됨")
           }
     }
-  /* 첨부파일 검증 */
-  function validation(fileArr) {
-    if (obj.name.length > 100) {
-        alert("파일명이 100자 이상인 파일은 제외되었습니다.");
-        return false;
-    } else if (fileArr.file.size > (100 * 1024 * 1024)) {
-        alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
-        return false;
-    } else if (fileArr.file.name.lastIndexOf('.') == -1) {
-        alert("확장자가 없는 파일은 제외되었습니다.");
-        return false;
-    }
-    else if (mapKey != 0) {
-        for (let value of fileArr.values()) {
-            if (value.name == fileArr.name) {
-                alert("중복된 파일입니다.")
-                return false;
-            }
-        }
-        return true;
-    }
-    else {
-        return true;
-    }
-  }
-
-
-
-
-
-
-
-
 
     function previewFile(file, index) {
         // console.log('index', index)
@@ -230,8 +202,10 @@ $(function () {
 
   function uploadFile() {
       if(fileArr.size != 0){
-          let form = $('#file-form')[0];
+          let form = $('#send-box')[0];
+          console.log("form",form)
           let formData = new FormData(form);
+          console.log(formData);
           
               $.ajax({
                   url : '/excel',
@@ -251,14 +225,14 @@ $(function () {
   }
 
   function FunLoadingBarStart() {
-      let backHeight = $(document).height();               	//뒷 배경의 상하 폭
-      let backWidth = window.document.body.clientWidth;		//뒷 배경의 좌우 폭
+      let backHeight = $(document).height();               	          // 뒷 배경의 상하 폭
+      let backWidth = window.document.body.clientWidth;		            // 뒷 배경의 좌우 폭
    
-      let backGroundCover = "<div id='back'></div>";			//뒷 배경을 감쌀 커버
-      let loadingBarImage = '';								//가운데 띄워 줄 이미지
+      let backGroundCover = "<div id='back'></div>";			            // 뒷 배경을 감쌀 커버
+      let loadingBarImage = '';								                        // 가운데 띄워 줄 이미지
    
       loadingBarImage += "<div id='loadingBar'>";
-      loadingBarImage += "     <img src='./images/loadingbar.gif'/>"; //로딩 바 이미지
+      loadingBarImage += "     <img src='./images/loadingbar.gif'/>"; // 로딩 바 이미지
       loadingBarImage += "</div>";
       loadingBarImage += "<div id='noticeMessage'><p>진행중입니다. 페이지에서 벗어나지 마십시오.</p></div>"
    
