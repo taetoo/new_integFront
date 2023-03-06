@@ -24,7 +24,7 @@
 }
 
 .login-title {
-    color: black;
+    color: #201C1D;
     text-align: center;
 }
 
@@ -46,7 +46,26 @@
     padding: 10px;
     width: 100%;
 }
-.btnSubmit {
+
+.eyes {
+    position: absolute;
+    top: 0;
+    bottom: 77px;
+    right: 243px;
+    margin: auto 2px;
+    height: 30px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+
+div.password{
+    /* width:350px; */
+    margin: 0 auto;
+    position: relative;
+}
+
+.btnSummit {
     background-color: #E7542E;
     color:#EEEFF1;
     font-size: 14px;
@@ -55,6 +74,14 @@
     border: none;
     border-radius: 5px;
     width: 100%;
+}
+
+div.password i{
+    position: absolute;
+    font-size: 16px;
+    left: 232px;
+    bottom: 26px;
+    color: #464646;
 }
 
 

@@ -5,7 +5,6 @@ const loginBtn = document.getElementById('loginBtn');
 loginBtn.disabled = true;
 loginBtn.style.opacity = .3;
 
-
 const isActiveLogin = () => {
   let idValue = idInput.value;
   let pwValue = pwInput.value;
@@ -43,6 +42,19 @@ function login(){
 
 
 }
+
+$(document).ready(function(){
+  $('.password i').on('click',function(){
+      $('input').toggleClass('active');
+      if($('input').hasClass('active')){
+          $(this).attr('class',"fa fa-eye-slash fa-lg")
+          .prev('input').attr('type',"text");
+      }else{
+          $(this).attr('class',"fa fa-eye fa-lg")
+          .prev('input').attr('type','password');
+      }
+  });
+});
 
     
     
