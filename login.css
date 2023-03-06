@@ -1,3 +1,8 @@
+*{
+    box-sizing: border-box;
+
+}
+
 .navbar_logo {
     display: flex;
     font-size: 24px;
@@ -6,36 +11,50 @@
     justify-content: center;
     align-items: center;
 }
+
 .logo_image{
     max-width: 100%;
     width: 200px;
     /* padding: 5px 10px; */
 }
 
-.login-form {
-    flex-direction: column;
-    width: 270px;
-    margin: 5vh auto;
-    height: 37vh;
-    border: 7px solid #FA4515;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border-radius: 10px;
+.body{
+    margin: 0;
+    
 }
 
-
-.login-id-label {
-    padding-bottom: 3px;
-}
 .login-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: black;
+    text-align: center;
 }
-.login-input {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     padding-bottom: 5px;;
+
+.login-form {
+    width: 300px;
+    border: 0;
+    border-radius: 6px;
+    background-color: #EEEFF1;
+    padding: 20px;
+    margin: 0 auto;
+
 }
+
+.text-field {
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+.btnSubmit {
+    background-color: #E7542E;
+    color:#EEEFF1;
+    font-size: 14px;
+    margin-bottom: 30px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+

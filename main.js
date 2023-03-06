@@ -1,11 +1,9 @@
 // 반응형 토글
 const toggleBtn = document.querySelector('.navbar_toggleBtn');
 const menu = document.querySelector('.navbar_menu');
-// const links = document.querySelector('.navbar_links');
 
 toggleBtn.addEventListener('click', () => {
     menu.classList.toggle('active');
-    // links.classList.toggle('active');
 })
 
 // 파일 저장 맵
@@ -42,9 +40,6 @@ function DropFile(dropAreaId, fileListId) {
         let dt = e.dataTransfer;
         let files = dt.files;
 
-        // console.log("filesTest",files)
-
-        // console.log(files)
         if(addFile(files)){
           let show = document.getElementById("send-box")
           if(show.style.display == "none"){
@@ -54,11 +49,7 @@ function DropFile(dropAreaId, fileListId) {
           }
 
           handleFiles(files);
-
-          // console.log('드롭다운시 파일목록',files)
           const fileList = document.getElementById(fileListId);
-  
-          // console.log("드롭다운시 파일html : ", fileList)
   
           if (fileList) {
             fileList.scrollTo({ top: fileList.scrollHeight });
@@ -91,7 +82,6 @@ function DropFile(dropAreaId, fileListId) {
     function handleFiles(files) {
           if(addFile(files)){
             let copy = [...files];
-            // copy.forEach(previewFile)
              copy.forEach((file) => {
             //  console.log("file",file)
             if (file.name.length > 100) {
@@ -103,8 +93,8 @@ function DropFile(dropAreaId, fileListId) {
             } else if (file.name.lastIndexOf('.') == -1) {
                 alert("확장자가 없는 파일은 제외되었습니다.");
                 return false;
-            } else if (files.length != 0) {
-                console.log("파일명",file.name)
+            } 
+                // console.log("파일명",file.name)
                 for (let value of fileArr.values()) {
                     if (value.name == file.name) {
                         alert("중복된 파일입니다.")
@@ -114,34 +104,27 @@ function DropFile(dropAreaId, fileListId) {
                 fileArr.set(mapKey, file)
                 previewFile(file, mapKey)
                 mapKey++;
-                console.log("파일리스트",fileArr)
-            return true;
-            }
-            // fileArr.set(mapKey, file)
-            //      previewFile(file, mapKey)
-            //      mapKey++;
-            //      console.log("파일리스트",fileArr)
+                return true;
                  })
               
           } else {
             alert("choosefile 안됨")
           }
+          // 클릭 이벤트 초기화 함수
+          document.querySelector("input[type=file]").value = "";
     }
 
-    function previewFile(file, index) {
-        // console.log('index', index)
-        // console.log('file', file)
-      fileList.appendChild(renderFile(file, index));
+    function previewFile(file, mapKey) {
+      fileList.appendChild(renderFile(file, mapKey));
     }
 
-    function renderFile(file, index) {
+    function renderFile(file, mapKey) {
       let fileDOM = document.createElement("div");
       // console.log('file', fileDOM)
         let deleteDom = document.getElementsByClassName('fas fa-minus-square')
 
       fileDOM.className = "file";
-      fileDOM.id = "fileIndex" + index;
-      // console.log("domId_index : ", fileDOM.id)
+      fileDOM.id = "fileIndex" + mapKey;
 
       fileDOM.innerHTML = `
         <div class="thumbnail">
@@ -159,7 +142,7 @@ function DropFile(dropAreaId, fileListId) {
             <span class="percent">100% done</span>
             <span class="speed">90KB/sec</span>
           </div> 
-          <a class="delete"><i onclick='remove_children(${index})' class="fas fa-minus-square" ></i></a>
+          <a class="delete"><i onclick='remove_children(${mapKey})' class="fas fa-minus-square" ></i></a>
         </div>
       `;
       return fileDOM;
@@ -176,18 +159,13 @@ function DropFile(dropAreaId, fileListId) {
 
   const dropFile = new DropFile("drop-file", "files");
 
-function remove_children(index) {
-    console.log('node', index)
+function remove_children(mapKey) {
+    // console.log('node', index)
     const parent = document.getElementById('files')
-    const child = document.getElementById("fileIndex" + index)
+    const child = document.getElementById("fileIndex" + mapKey)
 
     parent.removeChild(child)
-    fileArr.delete(index)
-
-    console.log('parent', parent)
-    console.log(fileArr)
-  
-    
+    fileArr.delete(mapKey)
 }
 
 $(function () {
@@ -195,11 +173,10 @@ $(function () {
   $('#send-file').on('click', function () {
       uploadFile()
       FunLoadingBarStart()
+  });
+
+  });
  
-  });
-
-  });
-
   function uploadFile() {
       if(fileArr.size != 0){
           let form = $('#send-box')[0];
@@ -215,7 +192,8 @@ $(function () {
                   processData : false
               }).done(function(data){
                   cancelIdleCallback(data)
-              });    
+              });
+              location.href="result.html";   
       } else {
           alert("첨부된 파일이 없습니다.")
           location.reload();

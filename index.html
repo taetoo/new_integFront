@@ -59,7 +59,7 @@
                 <p class="message">Drag excel-files to upload</p>
               </div>
               <label class="file-label">Choose File
-                <input class="file" id="chooseFile" type="file" multiple='multiple' multiple onchange="dropFile.handleFiles(this.files)" multiple accept=".xls,.xlsx">
+                <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" multiple accept=".xls,.xlsx">
               </label>
               <div class="notice-message" >파일은 최대 5개까지 첨부 가능합니다.</div>
             </div>

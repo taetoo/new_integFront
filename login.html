@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
-    <script src="/js/index.js"></script>
-
-    <meta charset="UTF-8">
+    
+ 
+   
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,26 +18,17 @@
 
 
     <title>로그인 페이지</title>
-
 </head>
 <body oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
-    <div class="navbar_logo">
-		<!-- 로고아이콘 -->
-		<a><img class="logo_image" src="./images/main-logo.png"></a>
-	</div>
+    <div class="navbar_logo"><a><img class="logo_image" src="./images/main-logo.png"></a></div>
     <div class="login-form">
-        <div class="login-title"><h3>통합코드 생성 시스템 로그인<h2></div><br>
-        <div class="login-input">
-            <form action="/user/login" method="post">
-                <div class="login-id-label">ID</div>
-                <input type="text" name="username" class="login-input-box" required="required" autofocus="autofocus"
-                    autocomplete="off">
-                <div class="login-id-label" style="padding-top: 7px;">Password</div>
-                <input type="password" name="password" class="login-input-box" required="required"><br><br>
-                <button id="login-id-submit">Login</button>
-            </form>
-        </div>    
-    <div id="login-failed" style="display:none" class="alert alert-danger" role="alert">ID or PW 를 확인해주세요.</div>
-</div>
+        <div class="login-title"><h3>통합 빌링 시스템 로그인<h2></div>
+        <form action="" method="POST"> 
+            <input type="text" id="user_id" class="text-field" placeholder="아이디">
+            <input type="text" id="user_pw" class="text-field" placeholder="비밀번호">
+            <input type="button" id="loginBtn" value="로그인" class="btnSubmit" disabled onclick="login()">
+        </form>
+    </div>
 </body>
+<script src="login.js"></script>
 </html>
