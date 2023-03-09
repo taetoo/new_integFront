@@ -20,14 +20,15 @@
     <title>로그인 페이지</title>
 </head>
 <body oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
-    <div class="navbar_logo"><a><img class="logo_image" src="./images/main-logo.png"></a></div>
+    
     <div class="login-form">
-        <div class="login-title"><h3>통합 빌링 시스템 로그인<h2></div>
-        <form action="" method="POST"> 
+        <div class="navbar_logo"><a><img class="logo_image" src="./images/main-logo.png"></a></div>
+        <div class="login-title"><h3>통합 빌링 시스템 <span style="color:#e7542e">로그인</span><h2></div>
+        <form action="" method="POST" id="login-form"> 
             <input type="text" id="user_id" class="text-field" placeholder="아이디" autocomplete="off">
             <div class="password">
                 <input type="password" id="user_pw" class="text-field" placeholder="비밀번호" autocomplete="off">
-                <i class="fa fa-eye fa-lg"></i>
+                <i class="fa fa-eye fa-lg" id="eyes"></i>
             </div>
             <input type="button" class="btnSummit" id="loginBtn" value="로그인" disabled onclick="login()">
         </form>

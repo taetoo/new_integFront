@@ -1,87 +1,83 @@
-*{
-    box-sizing: border-box;
-
+* {
+  box-sizing: border-box;
 }
 
-.navbar_logo {
-    display: flex;
-    font-size: 24px;
-    color: white;
-    padding-top: 100px;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo_image{
-    max-width: 100%;
-    width: 200px;
-    /* padding: 5px 10px; */
-}
-
-.body{
-    margin: 0;
-    
-}
-
-.login-title {
-    color: #201C1D;
-    text-align: center;
+.body {
+  display: block;
 }
 
 .login-form {
-    width: 300px;
-    border: 0;
-    border-radius: 6px;
-    background-color: #EEEFF1;
-    padding: 20px;
-    margin: 0 auto;
+  width: 300px;
+  border: 0;
+  border-radius: 6px;
+  background-color: #eeeff1;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 13vw;
+  box-shadow: 3px 3px 7px #d9dadc;
+}
 
+.navbar_logo {
+  margin-top: 20px;
+  display: flex;
+  font-size: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo_image {
+  max-width: 100%;
+  width: 180px;
+  /* padding: 5px 10px; */
+}
+
+.login-title {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  color: #201c1d;
+  text-align: center;
 }
 
 .text-field {
-    font-size: 14px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    width: 100%;
+  font-size: 14px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
 }
 
-.eyes {
-    position: absolute;
-    top: 0;
-    bottom: 77px;
-    right: 243px;
-    margin: auto 2px;
-    height: 30px;
-    font-size: 10px;
-    cursor: pointer;
-  }
+#eyes {
+  position: absolute;
+  top: 32px;
+  right: 243px;
+  margin: auto 2px;
+  height: 30px;
+  font-size: 15px;
+  cursor: pointer;
+}
 
-
-div.password{
-    /* width:350px; */
-    margin: 0 auto;
-    position: relative;
+div.password {
+  /* width:350px; */
+  margin: 0 auto;
+  position: relative;
 }
 
 .btnSummit {
-    background-color: #E7542E;
-    color:#EEEFF1;
-    font-size: 14px;
-    margin-bottom: 30px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    width: 100%;
+  background-color: #e7542e;
+  color: #eeeff1;
+  font-size: 14px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
 }
 
-div.password i{
-    position: absolute;
-    font-size: 16px;
-    left: 232px;
-    bottom: 26px;
-    color: #464646;
+div.password i {
+  position: absolute;
+  font-size: 16px;
+  left: 232px;
+  bottom: 26px;
+  color: #464646;
 }
-
-
