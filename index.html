@@ -52,6 +52,10 @@
     <div id="contents-wrap">
         <!-- <hr>  -->
         <h2 class="title">통합코드 생성 시스템</h2>
+        <div class="input-calendar">
+            <input type='date' class="currentDate" id='currentDate' data-placeholder="Choose-Date" required/>
+            <div class="date-notice-message" >날짜를 지정해 주세요.</div>      
+        </div>
         <div class="contents">
             <div class="upload-box">
               <div id="drop-file" class="drag-file">
@@ -61,7 +65,7 @@
               <label class="file-label">Choose File
                 <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" multiple accept=".xls,.xlsx">
               </label>
-              <div class="notice-message" >파일은 최대 5개까지 첨부 가능합니다.</div>
+              <div class="choose-notice-message" >파일은 최대 5개까지 첨부 가능합니다.</div>
             </div>
             <form class="send-box" id="send-box" enctype="multipart/form-data">
                     <div class="show-file">
@@ -71,13 +75,10 @@
                         <input class="file" id="send-file" type="button" multiple>
                     </label>
             </form>
-            
           </div>
         </div>
     </div>
-    
     <footer></footer>
-
 </body>
 
 </html>
