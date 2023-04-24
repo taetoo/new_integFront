@@ -406,7 +406,7 @@ input[type="date"] {
   padding: 0 42px 0 16px;
   background: url(../images/calendar.png) no-repeat right 21px center / 16px
     auto;
-  border: 1px solid #e1e1e1;
+  border: 2px solid #e1e1e1;
   border-radius: 12px;
 }
 
@@ -428,6 +428,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 input[type="date"]::before {
   content: attr(data-placeholder);
   width: 100%;
+  color: #bababa;
 }
 
 input[type="date"]:valid::before {
@@ -435,7 +436,7 @@ input[type="date"]:valid::before {
 }
 
 input[data-placeholer]::before {
-  color: #bababa !important;
+  color: #bababa;
   font-size: 14px;
 }
 
